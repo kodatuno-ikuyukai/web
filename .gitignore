@@ -1,0 +1,13 @@
+.DS_Store
+
+# Local planning notes
+SITE_REPLACE_PLAN_JA.md
+
+# note migration working files
+note_import/
+note_import.zip
+note_official_import.zip
+scripts/
+
+# Temporary converted source images
+assets/images/about-source/
