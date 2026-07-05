@@ -37,6 +37,15 @@ a {
   color: inherit;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 .container {
   width: min(100% - 40px, 1040px);
   margin: 0 auto;
@@ -63,8 +72,13 @@ a {
   color: var(--color-primary-dark);
   font-size: 1.18rem;
   font-weight: 700;
+  line-height: 1.35;
   text-decoration: none;
   white-space: nowrap;
+}
+
+.menu-toggle {
+  display: none;
 }
 
 .site-nav {
@@ -611,7 +625,8 @@ h2 span {
 
 .video-frame-large {
   border-radius: 8px;
-  aspect-ratio: 16 / 9;
+  /* Google Driveのプレビュー動画に合わせ、スマホでも欠けにくい4:3の枠にする。 */
+  aspect-ratio: 4 / 3;
   box-shadow: 0 18px 52px rgba(34, 55, 45, 0.14);
 }
 
@@ -911,14 +926,83 @@ h2 span {
   }
 
   .header-inner {
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    min-height: auto;
+    padding: 12px 0;
+  }
+
+  .site-title {
+    font-size: 1.04rem;
+    white-space: normal;
+  }
+
+  /* スマホでは横並びナビを隠し、右上のボタンで開閉するメニューに切り替える。 */
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    gap: 8px;
-    padding: 16px 0;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+    background: var(--color-surface);
+    box-shadow: 0 8px 24px rgba(34, 55, 45, 0.08);
+    cursor: pointer;
+  }
+
+  .menu-toggle-line {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--color-primary-dark);
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(2) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(3) {
+    opacity: 0;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(4) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
   .site-nav {
+    display: none;
+    grid-column: 1 / -1;
+    width: 100%;
     justify-content: flex-start;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--color-line);
+    padding-top: 8px;
+    font-size: 0.98rem;
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .site-nav a {
+    border-bottom: 1px solid rgba(214, 224, 215, 0.78);
+    padding: 12px 2px;
+  }
+
+  .site-nav a:hover,
+  .site-nav a:focus-visible,
+  .site-nav a[aria-current="page"] {
+    border-bottom-color: var(--color-coral);
   }
 
   .hero,
@@ -981,6 +1065,10 @@ h2 span {
   .mamorun-feature,
   .mamorun-character {
     padding: 24px;
+  }
+
+  .video-panel-featured {
+    padding: 10px;
   }
 
   .download-item {

@@ -6,12 +6,19 @@
     <title>まもるん絵描き歌 | 小立野小学校育友会</title>
     <meta name="description" content="小立野小学校キャラクター「まもるん」の絵描き歌を動画で見られるページです。">
     <link rel="stylesheet" href="styles.css">
+    <script src="site.js" defer></script>
   </head>
   <body>
     <header class="site-header">
       <div class="container header-inner">
         <a class="site-title" href="index.html">小立野小学校育友会</a>
-        <nav class="site-nav" aria-label="主要ナビゲーション">
+        <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+          <span class="visually-hidden">メニューを開く</span>
+          <span class="menu-toggle-line" aria-hidden="true"></span>
+          <span class="menu-toggle-line" aria-hidden="true"></span>
+          <span class="menu-toggle-line" aria-hidden="true"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="主要ナビゲーション">
           <a href="index.html">ホーム</a>
           <a href="about.html">小立野小学校育友会について</a>
           <a href="mamorun.html" aria-current="page">まもるん絵描き歌</a>

@@ -7,12 +7,19 @@
     <meta name="description" content="小立野小学校育友会の活動概要とnote更新情報をお知らせする公式サイトです。">
     <link rel="alternate" type="application/rss+xml" title="小立野小学校育友会 note RSS" href="https://note.com/kdtn_ikuyukai/rss/">
     <link rel="stylesheet" href="styles.css">
+    <script src="site.js" defer></script>
   </head>
   <body>
     <header class="site-header">
       <div class="container header-inner">
         <a class="site-title" href="index.html">小立野小学校育友会</a>
-        <nav class="site-nav" aria-label="主要ナビゲーション">
+        <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+          <span class="visually-hidden">メニューを開く</span>
+          <span class="menu-toggle-line" aria-hidden="true"></span>
+          <span class="menu-toggle-line" aria-hidden="true"></span>
+          <span class="menu-toggle-line" aria-hidden="true"></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="主要ナビゲーション">
           <a href="index.html" aria-current="page">ホーム</a>
           <a href="about.html">小立野小学校育友会について</a>
           <a href="mamorun.html">まもるん絵描き歌</a>
